@@ -28,6 +28,7 @@ int main(int argc, char *argv[])
  * @line: The line to be processed.
  * @line_number: The current line number.
  */
+
 void process_line(char *line, int line_number)
 {
 	char *opcode = strtok(line, " \n");
@@ -64,6 +65,7 @@ void process_line(char *line, int line_number)
  * open_and_process_file - Opens and processes the Monty bytecode file.
  * @filename: The name of the file to be processed.
  */
+
 void open_and_process_file(char *filename)
 {
 	FILE *file = fopen(filename, "r");
