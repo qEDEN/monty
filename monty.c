@@ -1,34 +1,10 @@
 #include "monty.h"
 
-void process_line(char *line, int line_number);
-void open_and_process_file(char *filename);
-
-/**
- * main - The main function of the Monty interpreter.
- * @argc: The number of command line arguments.
- * @argv: An array of strings containing the command line arguments.
- * Return: EXIT_SUCCESS on success, EXIT_FAILURE on failure.
- */
-
-int main(int argc, char *argv[])
-{
-	if (argc != 2)
-	{
-		fprintf(stderr, "Usage: %s <filename>\n", argv[0]);
-		exit(EXIT_FAILURE);
-	}
-
-	open_and_process_file(argv[1]);
-
-	return (EXIT_SUCCESS);
-}
-
 /**
  * process_line - Processes a line of the Monty bytecode file.
  * @line: The line to be processed.
  * @line_number: The current line number.
  */
-
 void process_line(char *line, int line_number)
 {
 	char *opcode = strtok(line, " \n");
@@ -65,7 +41,6 @@ void process_line(char *line, int line_number)
  * open_and_process_file - Opens and processes the Monty bytecode file.
  * @filename: The name of the file to be processed.
  */
-
 void open_and_process_file(char *filename)
 {
 	FILE *file = fopen(filename, "r");
@@ -86,4 +61,23 @@ void open_and_process_file(char *filename)
 	}
 
 	fclose(file);
+}
+
+/**
+ * main - The main function of the Monty interpreter.
+ * @argc: The number of command line arguments.
+ * @argv: An array of strings containing the command line arguments.
+ * Return: EXIT_SUCCESS on success, EXIT_FAILURE on failure.
+ */
+int main(int argc, char *argv[])
+{
+	if (argc != 2)
+	{
+		fprintf(stderr, "Usage: %s <filename>\n", argv[0]);
+		exit(EXIT_FAILURE);
+	}
+
+	open_and_process_file(argv[1]);
+
+	return (EXIT_SUCCESS);
 }
