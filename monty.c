@@ -1,50 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-#define STACK_SIZE 100
-
-/**
- * struct Stack - A simple stack structure.
- * @stack: An array to store stack elements.
- * @top: The index of the top element in the stack.
- */
-typedef struct Stack {
-    int stack[STACK_SIZE];
-    int top;
-} Stack;
+#include "monty.h"
 
 Stack stack;
-
-/**
- * push - Pushes an element onto the stack.
- * @value: The value to be pushed onto the stack.
- */
-void push(int value)
-{
-    if (stack.top < STACK_SIZE)
-    {
-        stack.stack[stack.top++] = value;
-    }
-    else
-    {
-        fprintf(stderr, "Error: Stack overflow\n");
-        exit(EXIT_FAILURE);
-    }
-}
-
-/**
- * pall - Prints all the values on the stack.
- */
-void pall(void)
-{
-    int i;
-
-    for (i = stack.top - 1; i >= 0; i--)
-    {
-        printf("%d\n", stack.stack[i]);
-    }
-}
 
 /**
  * main - The main function of the Monty interpreter.
