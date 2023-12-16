@@ -9,6 +9,7 @@ void open_and_process_file(char *filename);
  * @argv: An array of strings containing the command line arguments.
  * Return: EXIT_SUCCESS on success, EXIT_FAILURE on failure.
  */
+
 int main(int argc, char *argv[])
 {
 	if (argc != 2)
