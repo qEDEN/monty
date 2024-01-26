@@ -10,7 +10,7 @@ void add_nd_to_stk(stack_t **new_node, __attribute__((unused)) unsigned int ln)
 	stack_t *tmp;
 
 	handle_error(new_node == NULL || *new_node == NULL,
-		"Error: Failed to add node to stack\n");
+			"Error: Failed to add node to stack\n");
 
 	if (head == NULL)
 	{
@@ -53,7 +53,7 @@ void pop_top_node(stack_t **stack, unsigned int ln)
 	stack_t *tmp;
 
 	handle_error(stack == NULL || *stack == NULL,
-		"Error: Stack underflow at line %u\n", ln);
+			"Error: Stack underflow at line %u\n", ln);
 
 	tmp = *stack;
 	*stack = tmp->next;
@@ -70,7 +70,7 @@ void pop_top_node(stack_t **stack, unsigned int ln)
 void print_top_node(stack_t **stack, unsigned int ln)
 {
 	handle_error(stack == NULL || *stack == NULL,
-		"Error: Stack is empty at line %u\n", ln);
+			"Error: Stack is empty at line %u\n", ln);
 	printf("%d\n", (*stack)->n);
 }
 

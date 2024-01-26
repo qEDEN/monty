@@ -7,12 +7,12 @@
  */
 void process_file(char *file_name)
 {
+	int line_number = 1, format = 0;
 	FILE *fd = fopen(file_name, "r");
 
 	if (file_name == NULL || fd == NULL)
 		err(2, file_name);
 
-	int line_number = 1, format = 0;
 	char *buffer = NULL;
 	size_t len = 0;
 
@@ -27,7 +27,7 @@ void process_file(char *file_name)
 }
 
 /**
- * parse_line_and_execute - Parses a ln & executes the corresponding operation.
+ * parse_line_and_execute - Parses a line & executes the corresponding op.
  * @buffer: Line from the file.
  * @line_number: Line number.
  * @format: Storage format. If 0, nodes will be entered as a stack.
@@ -115,7 +115,7 @@ void find_and_execute(char *opcode, char *value, int line_number, int format)
 void call_function(op_func func, char *opcode, char *value, int ln, int format)
 {
 	stack_t *node;
-	int flag, i;
+	int flag;
 
 	flag = 1;
 	if (strcmp(opcode, "push") == 0)
@@ -127,17 +127,17 @@ void call_function(op_func func, char *opcode, char *value, int ln, int format)
 		}
 
 		if (value == NULL || !isdigit_str(value))
-			err(5, line_number);
+			err(5, ln);
 
 		node = create_node(atoi(value) * flag);
 
 		if (format == 0)
-			func(&node, line_number);
+			func(&node, ln);
 		if (format == 1)
-			add_to_queue(&node, line_number);
+			add_to_queue(&node, ln);
 	}
 	else
-		func(&head, line_number);
+		func(&head, ln);
 }
 
 /**
